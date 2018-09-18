@@ -38,7 +38,8 @@
         "react": "^16.5.1",
         "react-dom": "^16.5.1",
         "run-s": "^0.0.0",
-        "websocket": "^1.0.26"
+        "websocket": "^1.0.26",
+        "yarn": "^1.9.4"
     },
     "devDependencies": {
         "@0xproject/dev-utils": "^1.0.7",
