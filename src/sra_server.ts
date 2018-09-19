@@ -9,7 +9,7 @@ import {
     SignedOrder,
 } from '0x.js';
 import { APIOrder, OrderbookResponse, OrderConfigResponse } from '@0xproject/connect';
-import * as bodyParser from 'body-parser';
+// import * as bodyParser from 'body-parser';
 import * as express from 'express';
 
 import { NETWORK_CONFIGS } from './configs';
@@ -58,7 +58,13 @@ contractWrappers.exchange.subscribe(
 
 // HTTP Server
 const app = express();
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+app.use((req, res, next)=>{
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, access-control-allow-origin');
+    next();
+});
 /**
  * GET Orderbook endpoint retrieves the orderbook for a given asset pair.
  * http://sra-spec.s3-website-us-east-1.amazonaws.com/#operation/getOrderbook
