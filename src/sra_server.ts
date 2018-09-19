@@ -18,7 +18,7 @@ import { providerEngine } from './provider_engine';
 
 const HTTP_OK_STATUS = 200;
 const HTTP_BAD_REQUEST_STATUS = 400;
-const HTTP_PORT = 3300;
+const HTTP_PORT = process.env.PORT || 3300;
 
 // Global state
 const orders: SignedOrder[] = [];
