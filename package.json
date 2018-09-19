@@ -5,7 +5,7 @@
     "scripts": {
         "lint": "tslint --format stylish --project . --exclude **/src/generated_contract_wrappers/**/*",
         "watch": "cross-env yarn copy_artifacts && tsc -w",
-        "build": "cross-env yarn copy_artifacts && tsc",
+        "build": "cross-env yarn copy_artifacts && ./node_modules/typescript/bin/tsc",
         "clean": "shx rm -rf lib artifacts",
         "copy_artifacts:comment": "Typescript doesn't copy non-typescript files to `lib`, so we need to copy the artifact JSONs ourselves.",
         "copy_artifacts": "copyfiles -u 1 './src/artifacts/**/*' ./lib",
