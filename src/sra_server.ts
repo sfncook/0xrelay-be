@@ -9,7 +9,7 @@ import {
     SignedOrder,
 } from '0x.js';
 import { APIOrder, OrderbookResponse, OrderConfigResponse } from '@0xproject/connect';
-// import * as bodyParser from 'body-parser';
+import * as bodyParser from 'body-parser';
 import * as express from 'express';
 
 import { NETWORK_CONFIGS } from './configs';
@@ -58,7 +58,7 @@ contractWrappers.exchange.subscribe(
 
 // HTTP Server
 const app = express();
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use((req, res, next)=>{
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
@@ -159,6 +159,7 @@ function renderOrderbookResponse(baseAssetData: string, quoteAssetData: string):
 
 // As the orders come in as JSON they need to be turned into the correct types such as BigNumber
 function parseHTTPOrder(signedOrder: any): SignedOrder {
+    console.log('signedOrder:',signedOrder);
     signedOrder.salt = new BigNumber(signedOrder.salt);
     signedOrder.makerAssetAmount = new BigNumber(signedOrder.makerAssetAmount);
     signedOrder.takerAssetAmount = new BigNumber(signedOrder.takerAssetAmount);
